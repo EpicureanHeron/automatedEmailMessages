@@ -1,2 +1,5 @@
 # automatedEmailMessages
-Emails I find myself writing a lot, I created a script
+
+### creates an .txt file output in the outputFiles directory with formatted text that can be quickly generated and tossed into an email.
+
+
