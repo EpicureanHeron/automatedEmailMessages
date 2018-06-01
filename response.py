@@ -2,7 +2,7 @@ import datetime
 
 def whichToRun():
 	# prompts the user for what type of email message this is 
-	voucherOrReceipt = raw_input("Is the PO missing a voucher[1] or receipt[2]? Please enter 1 or 2:  ")
+	voucherOrReceipt = raw_input("Is the PO missing a voucher[1], receipt[2], or no receipt AND no voucher [3]? Please enter 1, 2, or 3:  ")
 	
 	# checks the value, and runs the necessary function to generate the message
 	if voucherOrReceipt == "1":
@@ -11,6 +11,9 @@ def whichToRun():
 	elif voucherOrReceipt == "2":
 		noReceipt()
 	#if neither 1 or 2 is passed, then exits the program with this message
+
+	elif voucherOrReceipt == "3":
+		noReceiptOrVoucher()
 	else:
 		print "Run this file again, you chose wrong! Either enter 1 or 2."
 				
@@ -62,8 +65,6 @@ def noReceipt():
 
 	firstLine = "Hello," + "\n" + "\n"
 
-	firstLine = "Hello," + "\n" + "\n"
-
 	PONumber = raw_input("PO Number: ")
 
 	supplierName = raw_input("Supplier Name: ")
@@ -81,5 +82,25 @@ def noReceipt():
 	file_1.close()
 	
 	print "Success! Your file is ready! Just follow the path: " + fileName 
+
+def noReceiptOrVoucher():
+
+	date = str(datetime.datetime.now().date())
+
+	fileName = "outputFiles/" + date + "-noReceipt" ".txt"
+
+	file_1= open(fileName, "w")
+
+	firstLine = "Hello," + "\n" + "\n"
+
+	PONumber = raw_input("PO Number: ")
+
+	supplierName = raw_input("Supplier Name: ")
+
+	preparersFirstName = raw_input("Preparer's first name: ")
+
+	preparersLastName = raw_input("Preparer's last name: ")
+
+	print "message in progres"
 
 whichToRun()
