@@ -15,7 +15,7 @@ def whichToRun():
 	elif voucherOrReceipt == "3":
 		noReceiptOrVoucher()
 	else:
-		print "Run this file again, you chose wrong! Either enter 1 or 2."
+		print "Run this file again, you chose wrong! Either enter 1, 2, or 3."
 				
 def noVoucher(): 
 	#gets the date 
@@ -87,7 +87,7 @@ def noReceiptOrVoucher():
 
 	date = str(datetime.datetime.now().date())
 
-	fileName = "outputFiles/" + date + "-noReceipt" ".txt"
+	fileName = "outputFiles/" + date + "-noReceiptNovoucher" ".txt"
 
 	file_1= open(fileName, "w")
 
@@ -101,10 +101,13 @@ def noReceiptOrVoucher():
 
 	preparersLastName = raw_input("Preparer's last name: ")
 	
-	message = "A representative from supplier " + supplierName + " contacted the University Financial Helpline inquiring about " + PONumber "." + "\n" + "\n" + "PO " + PONumber "was created from a requisition that " + preparersFirstName + " " + preparersLastName + " created. There has been no receipt or voucher against this PO yet." + "\n" + "\n" + "I have CC'd the supplier on this email. If you have received the items, but have not created a receipt in EFS yet, please go ahead and do so. Then send the invoice to your cluster for imaging. If you need either the invoice or have a problem with the order, please reach out the supplier." + "\n" + "\n" + "Let us know if our helpline can assist in anyway."
+	message = "A representative from supplier " + supplierName + " contacted the University Financial Helpline inquiring about payment from PO " + PONumber + "." + "\n" + "\n" + "PO " + PONumber +" was created from a requisition that " + preparersFirstName + " " + preparersLastName + " created. There has been no receipt or voucher against this PO yet." + "\n" + "\n" + "I have CC'd the supplier on this email. " + preparersFirstName + ", if you have received the items, but have not created a receipt in EFS yet, please go ahead and do so. Then send the invoice to your cluster for imaging. If you need either the invoice or have a problem with the order, please reach out the supplier." + "\n" + "\n" + "Let us know if our helpline can assist in anyway."
 	
-	print message
+	
 
-	#file_1.write(firstLine + message)
+	file_1.write(firstLine + message)
+	file_1.close()
+	
+	print "Success! Your file is ready! Just follow the path: " + fileName
 
 whichToRun()
